@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- YourMapper.xml -->
+<mapper namespace="com.Dao.keywordMapper">
+
+    <select id="selectById" resultType="com.entity.KeywordEntity">
+        SELECT * FROM keyword WHERE id = #{id}
+    </select>
+
+    <select id="selectAll" resultType="com.entity.KeywordEntity">
+        SELECT * FROM keyword
+    </select>
+
+    <select id="selectByKeyword" resultType="com.entity.KeywordEntity">
+        SELECT * FROM keyword WHERE keyword = #{keyword}
+    </select>
+
+    <insert id="insert" parameterType="com.entity.KeywordEntity">
+        INSERT INTO keyword ( keyword, `between`, compete, correlation)
+        VALUES ( #{keyword}, #{between}, #{compete}, #{correlation})
+    </insert>
+
+    <update id="update" parameterType="com.entity.KeywordEntity">
+        UPDATE keyword
+        SET keyword = #{keyword}, between = #{between}, compete = #{compete}, correlation = #{correlation}
+        WHERE id = #{id}
+    </update>
+
+    <delete id="delete" parameterType="int">
+        DELETE FROM keyword WHERE id = #{id}
+    </delete>
+
+</mapper>
